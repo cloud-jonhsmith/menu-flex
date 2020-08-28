@@ -8,25 +8,35 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <nav>
-            <ul class="nav-menu">
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#"><i class="fas fa-user"></i></a></li>
+            <ul id="nav-menu" class="nav-menu">
+                <!-- ícono hamburger -->
+                <li id="menu-movil" class="menu-movil"><a href="#"><i class="fas fa-bars"></i></a></li>
+                <li id="item1" class="items"><a href="#">HOME</a></li>
+                <li id="item2" class="items"><a href="#">CONTACT</a></li>
+                <li id="item3" class="items"><a href="#">ABOUT</a></li>
+                <!-- ícono user -->
+                <li id="user" class="user"><a href="#"><i class="fas fa-user"></i></a></li>
+                <!-- ícono cross -->
+                <li id="cross" class="cross"><a href="#"><i class="fas fa-times"></i></a></li>
             </ul>
         </nav>
+        <!-- Dibujando las cajas -->
         <section class="cajas">
+            <!-- 2 cuadros superiores -->
             <div class="cuadrados">
-                <article class="caja1 tam1">1</article>
-                <article class="caja2 tam2">2</article>
+                <article class="caja1 tam1"></article>
+                <article class="caja2 tam2"></article>
             </div>
+            <!-- cuadro intermedio -->
             <div class="cuadrados">
-                <article class="caja3 tam3">3</article>
+                <article class="caja3 tam3"></article>
             </div>
+            <!-- 2 cuadros inferiores -->
             <div class="cuadrados">
-                <article class="caja4 tam2">4</article>
-                <article class="caja5 tam1">5</article>
+                <article class="caja4 tam2"></article>
+                <article class="caja5 tam1"></article>
             </div>
         </section>
     </div>

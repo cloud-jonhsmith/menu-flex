@@ -4,50 +4,49 @@
     list-style: none;
     text-decoration: none;
     --colorcajas: #228be6; /* color de las cajas */
+    --alturaNav: 6.25rem;
+    --anchoMenu: 8.5rem;
 }
 
-nav {
+.nav-container {
     width: 100%;
-    height: 100px;
+    height: var(--alturaNav);
     background: #228be6;
     display: flex;
     justify-content: flex-end;
-}
-
-/* centra verticalmente los elementos del menú de navegación */
-.nav-menu {
-    display: flex;
     align-items: center;
 }
-
-/* icono hamburger */
-.menu-movil {
+.menu {display: flex;}
+.items {
+    display: flex;
+    justify-content: center;
+    width: var(--anchoMenu);
+    padding: 1em;
+}
+/* icono hamburger , cross y palabra HOME (ocultas inicialmente)*/
+.menu-movil , .cross , .item1 {
     display: none;
 }
-
-/* icono cross */
-.cross {
-    display: none;
-}
-
-/* palabra HOME (oculta al inicio) */
-#item1 {
-    display: none;
+.cross , .user {
+    margin-right: 3rem;
+    padding: 1em;
 }
 
 /* separación de los elementos del menú*/
 a {
     color: white;
-    margin-left: 50px;
-    margin-right: 50px;
-    padding: 10px;
+    line-height: 1.5em;
+    padding: 0 4em;
+    border-radius: 1.3em;
 }
-
-/* tamaño y color del icono user */
-i {
-    font-size: 30px;
-    color: black;
+/* Cambia de color de la etiqueta 'a' y los iconos al pasar el mouse */
+a:hover , .user:hover , .cross:hover , .menu-movil:hover {background: #09457a7e;}
+/* Al pulsar en un boton del menu se reduce el tamanio */
+a:active {
+    transform: scale(.95);
 }
+/* color de los iconos */
+i {color: black;}
 
 /* contenedor de las cajas */
 section {
@@ -56,34 +55,29 @@ section {
     margin: auto;
     margin-top: 100px;
 }
-
 /* clase que controlara los contenedores de los artículos*/
 .cajas {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
 /* clase que controla los artículos */
 .cuadrados {
     display: flex;
     justify-content: space-between;
 }
-
 /* tamaño de los artículos cuadrados */
 .tam1 {
     width: 200px;
     height: 200px;
     background: var(--colorcajas);
 }
-
 /* tamaño de los artículos rectángulos */
 .tam2 {
     width: 400px;
     height: 200px;
     background: var(--colorcajas);
 }
-
 /* tamaño de los artículos que ocupan todo el ancho */
 .tam3 {
     width: 100%;
@@ -92,62 +86,74 @@ section {
 }
 
 @media (max-width: 715px) {
-    nav {
-        height: auto;
-    }
-
-    nav .nav-menu {
-        width: 100%;
-        height: auto;
+    /* icono de user no mostrado para movil */
+    .user {display: none;}
+    /* icono hamburger se muestra */
+    .menu-movil {display: flex;}
+    /* se muestra la palabra HOME */
+    .menu > .item1 {display: flex;}
+    .nav-container {
         flex-direction: column;
+        justify-content: flex-start;
         align-items: flex-start;
+        transition: all 0.5s;
     }
-    
-    li {
-        margin-top: 20px;
-        margin-bottom: 20px;
+    .menu {
+        display: table;
+        position: absolute;
+        top: var(--alturaNav);
+        left: -15rem;
+        transition: all 0.5s;
+        border-radius: 15px;
+        width: 20%;
+        background: #1F2B2D;
     }
-
+    /* Vista del hamburger */
     .menu-movil {
-        display: flex;
+        width: calc(var(--anchoMenu) / 3);
+        height: calc(var(--anchoMenu) / 3);
+        font-size: 25px;
+        margin-left: 2rem;
     }
-
-    .items {
-        display: none;
-        width: auto;
-        order: 3;
+    /* centrar el hamburger */
+    .menu-movil i {
+        margin: auto;
     }
-
-    .user {
-        display: none;
+    .menu-movil , .cross {
+        margin-top: calc(var(--alturaNav) / 4);
+    }
+    /* tomara el lugar del hamburger cuando se oculte */
+    .nav-container:nth-last-child() {
+        order: -10;
     }
 
     a {
-        color: white;
-        margin-left: 0;
-        margin-right: 0;
+        /* color: white; */
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-bottom: 1px solid #ffffff;
     }
-
-    ul {
+    .items {
+        width: calc(var(--anchoMenu) - 3em);
+        line-height: 2em;
+        padding: .5em 2em;
+        padding-left: 1em;
         display: flex;
+        justify-content: flex-start;
     }
-
     section {
         width: 100%;
-        height: 100%;
-        margin-top: 100px;
     }
 
+    /* css para cajas */
     .cajas {
         align-items: center;
     }
-
     .caja1 , .caja2 , .caja3 , .caja4 , .caja5 {
         width: 200px;
         height: 200px;
         margin-bottom: 50px;
     }
-
     .cuadrados {
         display: flex;
         flex-direction: column;        

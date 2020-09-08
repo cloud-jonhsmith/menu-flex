@@ -55,70 +55,53 @@ window.addEventListener("resize", function(event) {
         }
     }
 })
-
-
-
-
-
-
-
-
-
-/* //controla el hamburger al hacer click
-var menu = document.getElementById("menu-movil")
-
-//controla el cross al cerrar el menú movil
-var cross = document.getElementById("cross")
-
-//para activar o desactivar la vista de los items del menú movil
-var items = document.getElementById("nav-menu")
-
-//controla los items del menú de navegación
-var item1 = document.getElementById("item1")
-var item2 = document.getElementById("item2")
-var item3 = document.getElementById("item3")
-
-//cuando se abre el menú movil, se oculta el contenido
-var cajas = document.getElementById("cajas")
-
-//se usará para variar el height y abarcar toda la pantalla del movil
-var container = document.getElementById("container")
-
-//abarcará el 100% del container
-var nav = document.getElementById("nav-container")
-
-icono.addEventListener("click", function(){
-    menu.style.left="0"
-    icono.style.display="none"
-    cross.style.display="flex"
-    cross.style.alignSelf="flex-end"
-    menu.style.left="0"   
+/* ----------------------------------------------
+--------------- MODAL ---------------------------
+---------------------------------------------- */
+const modal = document.getElementById('modal');
+const close = document.getElementById('close');
+/* const button = document.getElementById('button'); */
+const c2 = document.getElementById('caja2');
+const c3 = document.getElementById('caja3');
+const c4 = document.getElementById('caja4');
+const c5 = document.getElementById('caja5');
+/* button.addEventListener('click' , () => {modal.setAttribute('open','true')
+}) */
+close.addEventListener('click' , () => {modal.removeAttribute('open')
 })
 
-menu.addEventListener("click", function(){
-    menu.style.display="none"
-    cross.style.display="block"
-    cross.style.alignSelf="flex-end"
-
-    items.style.display="flex"
-
-    item1.style.display="block"
-    item2.style.display="block"
-    item3.style.display="block"
-
-    cajas.style.display="none"
-
-    container.style.height="1080px"
-    nav.style.height="100%"
+c2.addEventListener('click' , () => {modal.setAttribute('open','true')
+var cantidad2 = parseInt(c2.innerHTML);
 })
+c3.addEventListener('click' , function(){
+    modal.setAttribute('open','true');
+    var cantidad3 = parseInt(c3.innerHTML);
+});
+c4.addEventListener('click' , function(){
+    modal.setAttribute('open','true');
+    var cantidad4 = parseInt(c4.innerHTML);
+});
+c5.addEventListener('click' , function(){
+    modal.setAttribute('open','true');
+    var cantidad5 = parseInt(c5.innerHTML);
+});
 
-cross.addEventListener("click", function(){
-    cross.style.display="none"
-    menu.style.display="block"
+/* slider */
 
-    item1.style.display="none"
-    item2.style.display="none"
-    item3.style.display="none"
-    location.reload()
-})
- */
+var slideIndex = 1;
+        showDivs(slideIndex);
+        
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("imagenes");
+    if (n > x.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = x.length}
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndex-1].style.display = "block";  
+}

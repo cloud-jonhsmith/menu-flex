@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://kit.fontawesome.com/36d5762c6b.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -27,26 +28,39 @@
             </div>
         </nav>
 
+        <dialog id="modal" class="modal">
+            <div class="slider">
+                <i id="close" class="fas fa-times"></i>
+                <img class="imagenes" src="img/img1.png">
+                <img class="imagenes" src="img/img2.png">
+                <img class="imagenes" src="img/img3.png">
+                <img class="imagenes" src="img/img4.png">
+                <img class="imagenes" src="img/img5.png">
+              
+                <button class="w3-button w3-black w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="w3-button w3-black w3-display-right" onclick="plusDivs(1)">&#10095;</button>
+            </div>
+        </dialog>
+        <button id="button" style="display: none;">Abrir modal</button>
+
         <!-- Dibujando las cajas -->
         <section id="cajas" class="cajas">
             <!-- 2 cuadros superiores -->
             <div class="cuadrados">
-                <article class="caja1 tam1"></article>
-                <article class="caja2 tam2"></article>
+                <article id="caja1" class="caja1 tam1">1</article>
+                <article id="caja2" class="caja2 tam2">2</article>
             </div>
             <!-- cuadro intermedio -->
             <div class="cuadrados">
-                <article class="caja3 tam3"></article>
+                <article id="caja3" class="caja3 tam3">3</article>
             </div>
             <!-- 2 cuadros inferiores -->
             <div class="cuadrados">
-                <article class="caja4 tam2"></article>
-                <article class="caja5 tam1"></article>
+                <article id="caja4" class="caja4 tam2">4</article>
+                <article id="caja5" class="caja5 tam1">5</article>
             </div>
         </section>
     </div>
-    <script src="menu.js">
-        
-    </script>
+    <script src="menu.js"></script>
 </body>
 </html>

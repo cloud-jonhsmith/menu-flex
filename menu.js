@@ -16,7 +16,7 @@ var cajas = document.getElementById("cajas")
 /* -------------------------------------- 
                 Funciones
 ---------------------------------------*/
-/* funcion que controla el icono hamburger */
+//funcion que controla el icono hamburger
 icono.addEventListener("click", function(){
     menu.style.left="0"
     icono.style.display="none"
@@ -27,7 +27,7 @@ icono.addEventListener("click", function(){
     alturaNav.style.height="100vh"
 })
 
-/* función que controla el icono cross */
+//función que controla el icono cross
 cross.addEventListener("click", function(){
     cross.style.display="none"
     menu.style.left="-10em"
@@ -36,9 +36,7 @@ cross.addEventListener("click", function(){
     alturaNav.style.height="var(--alturaNav)"
 })
 
-/* funcion que captura el resize de la pantalla 
-y controla la vista del menu, los iconos, altura del nav,
-vista de las cajas */
+//funcion que captura el resize de la pantalla y controla la vista del menu, los iconos, altura del nav, vista de las cajas
 window.addEventListener("resize", function(event) {
     var nuevoAncho = document.body.clientWidth;
     if (nuevoAncho>715) {
@@ -55,53 +53,150 @@ window.addEventListener("resize", function(event) {
         }
     }
 })
+//muestra las flechas de izquiera y derecha ocultadas al activar el bloque Nº1
+function mostrarFlechas() {
+    izq.style.display="block";
+    der.style.display="block";
+}
+
 /* ----------------------------------------------
 --------------- MODAL ---------------------------
 ---------------------------------------------- */
+
+// todas las imágenes se encuentran dentro de una etiqueda dialog(id=modal)
 const modal = document.getElementById('modal');
+// boton para cerrar las imagenes
 const close = document.getElementById('close');
-/* const button = document.getElementById('button'); */
+// las variables c1,c2,...,c5 se utilizaran para capturar el numero de imagenes que se mostraran
+const c1 = document.getElementById('caja1');
 const c2 = document.getElementById('caja2');
 const c3 = document.getElementById('caja3');
 const c4 = document.getElementById('caja4');
 const c5 = document.getElementById('caja5');
-/* button.addEventListener('click' , () => {modal.setAttribute('open','true')
-}) */
-close.addEventListener('click' , () => {modal.removeAttribute('open')
-})
+// variables para manipular la visibilidad de las flechas
+const izq = document.getElementById('b-izq');
+const der = document.getElementById('b-der');
+// el valor de la variable cantidad varia segun el cuadrado elegido
+var cantidad = 1;
 
-c2.addEventListener('click' , () => {modal.setAttribute('open','true')
-var cantidad2 = parseInt(c2.innerHTML);
-})
-c3.addEventListener('click' , function(){
+c1.addEventListener('click' , function(){
+    izq.style.display="none";
+    der.style.display="none";
     modal.setAttribute('open','true');
-    var cantidad3 = parseInt(c3.innerHTML);
+    cantidad = parseInt(c1.innerHTML);//se obtiene el valor 1
+});
+
+c2.addEventListener('click' , function(){
+    mostrarFlechas();
+    modal.setAttribute('open','true');
+    cantidad = parseInt(c2.innerHTML);//se obtiene el valor 2
+});
+c3.addEventListener('click' , function(){
+    mostrarFlechas();
+    modal.setAttribute('open','true');
+    cantidad = parseInt(c3.innerHTML);//se obtiene el valor 3
 });
 c4.addEventListener('click' , function(){
+    mostrarFlechas();
     modal.setAttribute('open','true');
-    var cantidad4 = parseInt(c4.innerHTML);
+    cantidad = parseInt(c4.innerHTML);//se obtiene el valor 4
 });
 c5.addEventListener('click' , function(){
+    mostrarFlechas();
     modal.setAttribute('open','true');
-    var cantidad5 = parseInt(c5.innerHTML);
+    cantidad = parseInt(c5.innerHTML);//se obtiene el valor 5
 });
 
 /* slider */
-
 var slideIndex = 1;
-        showDivs(slideIndex);
-        
+
+showDivs(slideIndex);
+
+//se activa al pulsar una de las flechas y obtiene valor '1'(boton derecho) o '-1'(boton izquierdo)
 function plusDivs(n) {
-  showDivs(slideIndex += n);
+    showDivs(slideIndex += n);
 }
 
 function showDivs(n) {
     var i;
+    //obtiene los elementos de la clase imagenes
     var x = document.getElementsByClassName("imagenes");
-    if (n > x.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = x.length}
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
+    //el numero de imagenes mostradas seran con respecto al valor de cantidad, obtenidos al dar click en cualquiera de los cuadrados
+    switch (cantidad) {
+        case 1:
+            if (n > 1) {slideIndex = 1}
+            if (n < 1) {slideIndex = 1}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+            
+            //al cerrar el modal oculta todas la imagen mostrada actualmente y muestra la primera, luego restarura el valor del slideIndex en 1
+            close.addEventListener('click' , () => {
+                modal.removeAttribute('open')
+                x[slideIndex-1].style.display = "none";
+                x[0].style.display = "block";
+                slideIndex = 1
+            })
+            break;
+        case 2:
+            if (n > 2) {slideIndex = 2}
+            if (n < 1) {slideIndex = 1}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+            close.addEventListener('click' , () => {
+                modal.removeAttribute('open')
+                x[slideIndex-1].style.display = "none";
+                x[0].style.display = "block";
+                slideIndex = 1
+            })
+            break;
+        case 3:
+            if (n > 3) {slideIndex = 3}
+            if (n < 1) {slideIndex = 1}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+            close.addEventListener('click' , () => {
+                modal.removeAttribute('open')
+                x[slideIndex-1].style.display = "none";
+                x[0].style.display = "block";
+                slideIndex = 1
+            })
+            break;
+        case 4:
+            if (n > 4) {slideIndex = 4}
+            if (n < 1) {slideIndex = 1}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+            close.addEventListener('click' , () => {
+                modal.removeAttribute('open')
+                x[slideIndex-1].style.display = "none";
+                x[0].style.display = "block";
+                slideIndex = 1
+            })
+            break;
+        case 5:
+            if (n > 5) {slideIndex = 5}
+            if (n < 1) {slideIndex = 1}
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            x[slideIndex-1].style.display = "block";
+            close.addEventListener('click' , () => {
+                modal.removeAttribute('open')
+                x[slideIndex-1].style.display = "none";
+                x[0].style.display = "block";
+                slideIndex = 1
+            })
+            break;
+    
+        default:alert("Error desconocido")
+            break;
     }
-    x[slideIndex-1].style.display = "block";  
 }

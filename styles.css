@@ -162,7 +162,6 @@ section {
     }
 
     a {
-        /* color: white; */
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         border-bottom: 1px solid #ffffff;
@@ -174,6 +173,7 @@ section {
         padding-left: 16px;
         display: flex;
         justify-content: flex-start;
+        color: white;
     }
     section {
         width: 100%;

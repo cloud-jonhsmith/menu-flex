@@ -60,7 +60,7 @@ function mostrarFlechas() {
 }
 
 /* ----------------------------------------------
---------------- MODAL ---------------------------
+--------------- IMAGENES ------------------------
 ---------------------------------------------- */
 
 // todas las imágenes se encuentran dentro de una etiqueda dialog(id=modal)
@@ -73,9 +73,15 @@ const c2 = document.getElementById('caja2');
 const c3 = document.getElementById('caja3');
 const c4 = document.getElementById('caja4');
 const c5 = document.getElementById('caja5');
+//id de las imagenes
+let img1 = document.getElementById('img1');
+let img2 = document.getElementById('img2');
+let img3 = document.getElementById('img3');
+let img4 = document.getElementById('img4');
+let img5 = document.getElementById('img5');
 // variables para manipular la visibilidad de las flechas
-const izq = document.getElementById('b-izq');
-const der = document.getElementById('b-der');
+let izq = document.getElementById('b-izq');
+let der = document.getElementById('b-der');
 // el valor de la variable cantidad varia segun el cuadrado elegido
 var cantidad = 1;
 
@@ -107,7 +113,7 @@ c5.addEventListener('click' , function(){
     cantidad = parseInt(c5.innerHTML);//se obtiene el valor 5
 });
 
-/* slider */
+//slider
 var slideIndex = 1;
 
 showDivs(slideIndex);
@@ -140,8 +146,8 @@ function showDivs(n) {
             })
             break;
         case 2:
-            if (n > 2) {slideIndex = 2}
-            if (n < 1) {slideIndex = 1}
+            if (n > 2) {slideIndex = 1}
+            if (n < 1) {slideIndex = 2}
             for (i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
             }
@@ -154,8 +160,8 @@ function showDivs(n) {
             })
             break;
         case 3:
-            if (n > 3) {slideIndex = 3}
-            if (n < 1) {slideIndex = 1}
+            if (n > 3) {slideIndex = 1}
+            if (n < 1) {slideIndex = 3}
             for (i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
             }
@@ -168,8 +174,8 @@ function showDivs(n) {
             })
             break;
         case 4:
-            if (n > 4) {slideIndex = 4}
-            if (n < 1) {slideIndex = 1}
+            if (n > 4) {slideIndex = 1}
+            if (n < 1) {slideIndex = 4}
             for (i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
             }
@@ -182,8 +188,8 @@ function showDivs(n) {
             })
             break;
         case 5:
-            if (n > 5) {slideIndex = 5}
-            if (n < 1) {slideIndex = 1}
+            if (n > 5) {slideIndex = 1}
+            if (n < 1) {slideIndex = 5}
             for (i = 0; i < x.length; i++) {
                 x[i].style.display = "none";
             }

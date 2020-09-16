@@ -157,7 +157,7 @@ function initImages(n) {
         $img3_4.classList.add("imagenes");
         $img3_4.setAttribute("src","img/img2.png");
         $sliderContainer.appendChild($img3_4)
-
+        
         $sliderContainer.firstElementChild.style.left = "-500px";
         $sliderContainer.lastElementChild.style.left = "500px";
 
@@ -190,40 +190,263 @@ function initImages(n) {
 }
 
 //n aumenta de 1 en 1 cada vez que se presionan las fechas de derecha o izquierda, esta funcion agrega un nodo al inicio, que se va a mostrar al deslizar hacia la derecha
-function addNodeLeft(n) {
-    if (n%2===0) {
-        let $nodo = document.createElement("img");
+function addNodeLeft(n, detectImg) {
+    switch (cantidad) {
+        case 1:
+            
+            break;
 
-        $nodo.classList.add("imagenes");
-        $nodo.setAttribute("src","img/img1.png");
-        $sliderContainer.appendChild($nodo);
-        $sliderContainer.lastElementChild.style.left = "500px";
-    } else {
-        let $nodo = document.createElement("img");
+        case 2:
 
-        $nodo.classList.add("imagenes");
-        $nodo.setAttribute("src","img/img2.png");
-        $sliderContainer.appendChild($nodo);
-        $sliderContainer.lastElementChild.style.left = "500px";
+            if (n%2===0) {
+                let $nodo = document.createElement("img");
+        
+                $nodo.classList.add("imagenes");
+                $nodo.setAttribute("src","img/img1.png");
+                $sliderContainer.insertBefore($nodo, $sliderContainer.firstChild);
+                $sliderContainer.firstElementChild.style.left = "-500px";
+            } else {
+                let $nodo = document.createElement("img");
+        
+                $nodo.classList.add("imagenes");
+                $nodo.setAttribute("src","img/img2.png");
+                $sliderContainer.insertBefore($nodo, $sliderContainer.firstChild);
+                $sliderContainer.firstElementChild.style.left = "-500px";
+            }
+            break;
+
+        case 3:
+
+            if (detectImg === 'img/img1.png') {
+                let $nodo_3 = document.createElement("img");
+            
+                    $nodo_3.classList.add("imagenes");
+                    $nodo_3.setAttribute("src","img/img2.png");
+                    $sliderContainer.insertBefore($nodo_3, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else if (detectImg === 'img/img2.png') {
+                let $nodo_3 = document.createElement("img");
+            
+                    $nodo_3.classList.add("imagenes");
+                    $nodo_3.setAttribute("src","img/img3.png");
+                    $sliderContainer.insertBefore($nodo_3, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else {
+                let $nodo_3 = document.createElement("img");
+            
+                    $nodo_3.classList.add("imagenes");
+                    $nodo_3.setAttribute("src","img/img1.png");
+                    $sliderContainer.insertBefore($nodo_3, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            }
+
+            break;
+
+        case 4:
+
+            if (detectImg === 'img/img1.png') {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img3.png");
+                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else if (detectImg === 'img/img2.png') {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img4.png");
+                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else if (detectImg === 'img/img3.png') {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img1.png");
+                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img2.png");
+                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            }
+            break;
+
+        case 5:
+
+            if (detectImg === 'img/img1.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img4.png");
+                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else if (detectImg === 'img/img2.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img5.png");
+                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else if (detectImg === 'img/img3.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img1.png");
+                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else if (detectImg === 'img/img4.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img2.png");
+                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            } else {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img3.png");
+                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
+                    $sliderContainer.firstElementChild.style.left = "-500px";
+            }
+            break;
+    
+        default:
+            break;
     }
 }
 
 //n aumenta de 1 en 1 cada vez que se presionan las fechas de derecha o izquierda, esta funcion agrega un nodo al final, que se va a mostrar al deslizar hacia la izquierda
-function addNodeRight(n) {
-    if (n%2===0) {
-        let $nodo = document.createElement("img");
+function addNodeRight(n, detectImg) {
+    switch (cantidad) {
+        case 1:
+            
+            break;
 
-        $nodo.classList.add("imagenes");
-        $nodo.setAttribute("src","img/img1.png");
-        $sliderContainer.insertBefore($nodo, $sliderContainer.firstChild);
-        $sliderContainer.firstElementChild.style.left = "-500px";
-    } else {
-        let $nodo = document.createElement("img");
+        case 2:
 
-        $nodo.classList.add("imagenes");
-        $nodo.setAttribute("src","img/img2.png");
-        $sliderContainer.insertBefore($nodo, $sliderContainer.firstChild);
-        $sliderContainer.firstElementChild.style.left = "-500px";
+            if (n%2===0) {
+                let $nodo_2 = document.createElement("img");
+        
+                $nodo_2.classList.add("imagenes");
+                $nodo_2.setAttribute("src","img/img1.png");
+                $sliderContainer.appendChild($nodo_2);
+                $sliderContainer.lastElementChild.style.left = "500px";
+            } else {
+                let $nodo_2 = document.createElement("img");
+        
+                $nodo_2.classList.add("imagenes");
+                $nodo_2.setAttribute("src","img/img2.png");
+                $sliderContainer.appendChild($nodo_2);
+                $sliderContainer.lastElementChild.style.left = "500px";
+            }
+            break;
+
+        case 3:
+
+            if (detectImg === 'img/img1.png') {
+                let $nodo_3 = document.createElement("img");
+            
+                    $nodo_3.classList.add("imagenes");
+                    $nodo_3.setAttribute("src","img/img3.png");
+                    $sliderContainer.appendChild($nodo_3);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else if (detectImg === 'img/img2.png') {
+                let $nodo_3 = document.createElement("img");
+            
+                    $nodo_3.classList.add("imagenes");
+                    $nodo_3.setAttribute("src","img/img1.png");
+                    $sliderContainer.appendChild($nodo_3);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else {
+                let $nodo_3 = document.createElement("img");
+            
+                    $nodo_3.classList.add("imagenes");
+                    $nodo_3.setAttribute("src","img/img2.png");
+                    $sliderContainer.appendChild($nodo_3);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            }
+            break;
+
+        case 4:
+
+            if (detectImg === 'img/img1.png') {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img3.png");
+                    $sliderContainer.appendChild($nodo_4);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else if (detectImg === 'img/img2.png') {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img4.png");
+                    $sliderContainer.appendChild($nodo_4);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else if (detectImg === 'img/img3.png') {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img1.png");
+                    $sliderContainer.appendChild($nodo_4);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else {
+                let $nodo_4 = document.createElement("img");
+            
+                    $nodo_4.classList.add("imagenes");
+                    $nodo_4.setAttribute("src","img/img2.png");
+                    $sliderContainer.appendChild($nodo_4);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            }
+            break;
+
+        case 5:
+
+            if (detectImg === 'img/img1.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img3.png");
+                    $sliderContainer.appendChild($nodo_5);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else if (detectImg === 'img/img2.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img4.png");
+                    $sliderContainer.appendChild($nodo_5);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else if (detectImg === 'img/img3.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img5.png");
+                    $sliderContainer.appendChild($nodo_5);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else if (detectImg === 'img/img4.png') {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img1.png");
+                    $sliderContainer.appendChild($nodo_5);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            } else {
+                let $nodo_5 = document.createElement("img");
+            
+                    $nodo_5.classList.add("imagenes");
+                    $nodo_5.setAttribute("src","img/img2.png");
+                    $sliderContainer.appendChild($nodo_5);
+                    $sliderContainer.lastElementChild.style.left = "500px";
+            }
+            break;
+    
+        default:
+            break;
     }
 }
 
@@ -236,21 +459,69 @@ function resetImages() {
         $sliderContainer.removeChild($sliderContainer.children[2]);
         $sliderContainer.removeChild($sliderContainer.children[1]);
         $sliderContainer.removeChild($sliderContainer.children[0]);
-    }    
+    }
 }
 
 //valorN sera '1'(presiona el boton derecha) o '-1'(presiona el boton izquierda)
-function restartImages(n, valorN) {
+function restartImages(n, valorN, detectaImagen) {
 
-    if (valorN > 0) {
-        $sliderContainer.removeChild($sliderContainer.children[0]);
+    switch (cantidad) {
+        case 1:
+            
+            break;
+    
+        case 2:
+            if (valorN > 0) {
+                $sliderContainer.removeChild($sliderContainer.children[0]);
+        
+                addNodeRight(n, detectaImagen);
+            } else {
+                $sliderContainer.removeChild($sliderContainer.children[2]);
+        
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
 
-        addNodeLeft(n);
-    } else {
-        $sliderContainer.removeChild($sliderContainer.children[2]);
+        case 3:
+            if (valorN > 0) {
+                $sliderContainer.removeChild($sliderContainer.children[0]);
+        
+                addNodeRight(n, detectaImagen);
+            } else {
+                $sliderContainer.removeChild($sliderContainer.children[2]);
+        
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
 
-        addNodeRight(n);
+        case 4:
+            if (valorN > 0) {
+                $sliderContainer.removeChild($sliderContainer.children[0]);
+                
+                addNodeRight(n, detectaImagen);
+            } else {
+                $sliderContainer.removeChild($sliderContainer.children[2]);
+
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
+
+        case 5:
+            if (valorN > 0) {
+                $sliderContainer.removeChild($sliderContainer.children[0]);
+
+                addNodeRight(n, detectaImagen);
+            } else {
+                $sliderContainer.removeChild($sliderContainer.children[2]);
+
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
+    
+        default:
+            break;
     }
+    
     
 }
 
@@ -301,7 +572,7 @@ c5.addEventListener('click' , function(){
 //slider
 var slideIndex = 1;
 
-showDivs(slideIndex,0);
+showDivs(slideIndex,1);
 
 //se activa al pulsar una de las flechas y obtiene valor '1'(boton derecho) o '-1'(boton izquierdo)
 function plusDivs(n) {
@@ -319,31 +590,76 @@ function showDivs(n, valorN) {
             break;
         case 2:
         //valorN sera positivo si se presiona la flecha derecha
-        if (valorN > 0) {
-            x[0].style.left = "-1000px";
-            x[1].style.left = "-500px";
-            x[2].style.left = "0";
-            
-            restartImages(n, valorN);
-        } else {
-            x[0].style.left = "0";
-            x[1].style.left = "500px";
-            x[2].style.left = "1000px";
+            if (valorN > 0) {
+                x[0].style.left = "-1000px";
+                x[1].style.left = "-500px";
+                x[2].style.left = "0";
+                
+                restartImages(n, valorN);
+            } else {
+                x[0].style.left = "0";
+                x[1].style.left = "500px";
+                x[2].style.left = "1000px";
 
-            restartImages(n, valorN);
-        }   
+                restartImages(n, valorN);
+            }   
 
             break;
         case 3:
-            
+            let detectaImagen_3 = "";
+            detectaImagen_3 = x[1].getAttribute("src");
+
+            if (valorN > 0) {
+                x[0].style.left = "-1000px";
+                x[1].style.left = "-500px";
+                x[2].style.left = "0";
+                    
+                restartImages(n, valorN, detectaImagen_3);
+            } else {
+                x[0].style.left = "0";
+                x[1].style.left = "500px";
+                x[2].style.left = "1000px";
+        
+                restartImages(n, valorN, detectaImagen_3);
+            } 
             
             break;
         case 4:
-            
+            let detectaImagen_4 = "";
+            detectaImagen_4 = x[1].getAttribute("src");
+    
+            if (valorN > 0) {
+                x[0].style.left = "-1000px";
+                x[1].style.left = "-500px";
+                x[2].style.left = "0";
+                    
+                restartImages(n, valorN, detectaImagen_4);
+            } else {
+                x[0].style.left = "0";
+                x[1].style.left = "500px";
+                x[2].style.left = "1000px";
+        
+                restartImages(n, valorN, detectaImagen_4);
+            }
             
             break;
         case 5:
-            
+            let detectaImagen_5 = "";
+            detectaImagen_5 = x[1].getAttribute("src");
+    
+            if (valorN > 0) {
+                x[0].style.left = "-1000px";
+                x[1].style.left = "-500px";
+                x[2].style.left = "0";
+                    
+                restartImages(n, valorN, detectaImagen_5);
+            } else {
+                x[0].style.left = "0";
+                x[1].style.left = "500px";
+                x[2].style.left = "1000px";
+        
+                restartImages(n, valorN, detectaImagen_5);
+            }
             
             break;
     

@@ -54,9 +54,9 @@ window.addEventListener("resize", function(event) {
     }
 })
 //muestra las flechas de izquiera y derecha ocultadas al activar el bloque Nº1
-function mostrarFlechas() {
-    izq.style.display="block";
-    der.style.display="block";
+function showArrows() {
+    arrowLeft.style.display="block";
+    arrowRight.style.display="block";
 }
 
 /* ----------------------------------------------
@@ -67,252 +67,196 @@ function mostrarFlechas() {
 const modal = document.getElementById('modal');
 // boton para cerrar las imagenes
 const close = document.getElementById('close');
-// las variables c1,c2,...,c5 se utilizaran para capturar el numero de imagenes que se mostraran
+// las variables c1,c2,c3,c4,c5 se utilizaran para capturar el numero de imagenes que se mostraran, se guardaran en la variable "quantityImagesShow"
 const c1 = document.getElementById('caja1');
 const c2 = document.getElementById('caja2');
 const c3 = document.getElementById('caja3');
 const c4 = document.getElementById('caja4');
 const c5 = document.getElementById('caja5');
+// el valor de la variable "quantityImagesShow" varia segun el cuadrado elegido
+var quantityImagesShow = 1;
+var slideIndex = 1;
 
-/* var x = document.getElementsByClassName('imagenes');
-console.log(x); */
 const $sliderContainer = document.querySelector(".slider-container"); //div slider-container, dentro estaran las imagenes
-console.log($sliderContainer);
+//obtiene los elementos de la clase imagenes
+const $childrenSliderContainer = document.getElementsByClassName("imagenes");
 
 // variables para manipular la visibilidad de las flechas
-let izq = document.getElementById('b-izq');
-let der = document.getElementById('b-der');
-// el valor de la variable cantidad varia segun el cuadrado elegido
-var cantidad = 1;
+let arrowLeft = document.getElementById('b-izq');
+let arrowRight = document.getElementById('b-der');
+
 
 //inicializa el contenedor del slider con 3 imagenes (si presiona la caja3, agrega la imagen2 a la derecha y la imagen3 a la izquierda, si presiona la caja5, agrega la imagen 2 a la derecha y la imagen 5 a la izquierda)
 function initImages(n) {
     switch (n) {
         case 1:
-        
-            const $img1_1 = document.createElement("img");
+            
+            const $nodeOneImage = document.createElement("img");
       
-        $img1_1.classList.add("imagenes");
-        $img1_1.setAttribute("src","img/img1.png");
-        $sliderContainer.appendChild($img1_1);
-
+            $nodeOneImage.classList.add("imagenes");
+            $nodeOneImage.setAttribute("src","img/img1.png");
+            $sliderContainer.appendChild($nodeOneImage);            
             break;
 
         case 2:
-
-            const $img1_2 = document.createElement("img"),//ocupara el primer elemento del contenedor de imagenes ($sliderContainer)
-                  $img2_2 = document.createElement("img"),//ocupara el segundo elemento del contenedor de imagenes ($sliderContainer)
-                  $img3_2 = document.createElement("img");//ocupara el tercer elemento del contenedor de imagenes ($sliderContainer)
-      
-        //se agregan los atributos de los nodos
-        $img1_2.classList.add("imagenes");
-        $img1_2.setAttribute("src","img/img2.png");
-        $sliderContainer.appendChild($img1_2)
-        $img2_2.classList.add("imagenes");
-        $img2_2.setAttribute("src","img/img1.png");
-        $sliderContainer.appendChild($img2_2)
-        $img3_2.classList.add("imagenes");
-        $img3_2.setAttribute("src","img/img2.png");
-        $sliderContainer.appendChild($img3_2)
-        
-        //se agregan las posiciones del primer y ultimo elemento
-        $sliderContainer.firstElementChild.style.left = "-500px";
-        $sliderContainer.lastElementChild.style.left = "500px";
-
+            
+            const $nodeTwoImages1 = document.createElement("img"),//ocupara el primer elemento del contenedor de imagenes ($sliderContainer)
+            $nodeTwoImages2 = document.createElement("img"),//ocupara el segundo elemento del contenedor de imagenes ($sliderContainer)
+            $nodeTwoImages3 = document.createElement("img");//ocupara el tercer elemento del contenedor de imagenes ($sliderContainer)
+            
+            $nodeTwoImages1.classList.add("imagenes");
+            $nodeTwoImages1.setAttribute("src","img/img2.png");
+            $sliderContainer.appendChild($nodeTwoImages1);
+            loadSliderContainer($nodeTwoImages2,$nodeTwoImages3);
+            //se agregan las posiciones del primer y ultimo elemento
+            initPosition();                
             break;
-
+                
         case 3:
-        
-            const $img1_3 = document.createElement("img"),
-                  $img2_3 = document.createElement("img"),
-                  $img3_3 = document.createElement("img");
-      
-        $img1_3.classList.add("imagenes");
-        $img1_3.setAttribute("src","img/img3.png");
-        $sliderContainer.appendChild($img1_3)
-        $img2_3.classList.add("imagenes");
-        $img2_3.setAttribute("src","img/img1.png");
-        $sliderContainer.appendChild($img2_3)
-        $img3_3.classList.add("imagenes");
-        $img3_3.setAttribute("src","img/img2.png");
-        $sliderContainer.appendChild($img3_3)
-
-        $sliderContainer.firstElementChild.style.left = "-500px";
-        $sliderContainer.lastElementChild.style.left = "500px";
-
+            
+            const $nodeThreeImages1 = document.createElement("img"),
+            $nodeThreeImages2 = document.createElement("img"),
+            $nodeThreeImages3 = document.createElement("img");
+            
+            $nodeThreeImages1.classList.add("imagenes");
+            $nodeThreeImages1.setAttribute("src","img/img3.png");
+            $sliderContainer.appendChild($nodeThreeImages1);
+            loadSliderContainer($nodeThreeImages2,$nodeThreeImages3);
+            initPosition();            
             break;
-
+                    
         case 4:
-        
-            const $img1_4 = document.createElement("img"),
-                  $img2_4 = document.createElement("img"),
-                  $img3_4 = document.createElement("img");
-      
-        $img1_4.classList.add("imagenes");
-        $img1_4.setAttribute("src","img/img4.png");
-        $sliderContainer.appendChild($img1_4)
-        $img2_4.classList.add("imagenes");
-        $img2_4.setAttribute("src","img/img1.png");
-        $sliderContainer.appendChild($img2_4)
-        $img3_4.classList.add("imagenes");
-        $img3_4.setAttribute("src","img/img2.png");
-        $sliderContainer.appendChild($img3_4)
-        
-        $sliderContainer.firstElementChild.style.left = "-500px";
-        $sliderContainer.lastElementChild.style.left = "500px";
-
+            
+            const $nodeFourImages1 = document.createElement("img"),
+            $nodeFourImages2 = document.createElement("img"),
+            $nodeFourImages3 = document.createElement("img");
+            
+            $nodeFourImages1.classList.add("imagenes");
+            $nodeFourImages1.setAttribute("src","img/img4.png");
+            $sliderContainer.appendChild($nodeFourImages1);
+            loadSliderContainer($nodeFourImages2,$nodeFourImages3);        
+            initPosition();            
             break;
-
+                        
         case 5:
-        
-            const $img1_5 = document.createElement("img"),
-                  $img2_5 = document.createElement("img"),
-                  $img3_5 = document.createElement("img");
-      
-        $img1_5.classList.add("imagenes");
-        $img1_5.setAttribute("src","img/img5.png");
-        $sliderContainer.appendChild($img1_5)
-        $img2_5.classList.add("imagenes");
-        $img2_5.setAttribute("src","img/img1.png");
-        $sliderContainer.appendChild($img2_5)
-        $img3_5.classList.add("imagenes");
-        $img3_5.setAttribute("src","img/img2.png");
-        $sliderContainer.appendChild($img3_5)
-        
-        $sliderContainer.firstElementChild.style.left = "-500px";
-        $sliderContainer.lastElementChild.style.left = "500px";
-
+            
+            const $nodeFiveImages1 = document.createElement("img"),
+            $nodeFiveImages2 = document.createElement("img"),
+            $nodeFiveImages3 = document.createElement("img");
+            
+            $nodeFiveImages1.classList.add("imagenes");
+            $nodeFiveImages1.setAttribute("src","img/img5.png");
+            $sliderContainer.appendChild($nodeFiveImages1);
+            loadSliderContainer($nodeFiveImages2,$nodeFiveImages3);        
+            initPosition();            
             break;
+            
+            default:
+                break;
+    }
+}
+
+//valorN sera '1'(presiona el boton derecha) o '-1'(presiona el boton izquierda)
+function restartImages(n, valorN, detectaImagen) {
     
+    switch (quantityImagesShow) {
+        case 1:
+        
+            break;
+        
+        case 2:            
+            if (valorN > 0) {
+                removeNodeLeft();
+                addNodeRight(n, detectaImagen);
+            } else {
+                removeNodeRight();
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
+        
+        case 3:
+            if (valorN > 0) {
+                removeNodeLeft();
+                addNodeRight(n, detectaImagen);
+            } else {
+                removeNodeRight();
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
+        
+        case 4:
+            if (valorN > 0) {
+                removeNodeLeft();
+                addNodeRight(n, detectaImagen);
+            } else {
+                removeNodeRight();
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
+                
+        case 5:
+            if (valorN > 0) {
+                removeNodeLeft();
+                addNodeRight(n, detectaImagen);
+            } else {
+                removeNodeRight();
+                addNodeLeft(n, detectaImagen);
+            }
+            break;
+            
         default:
             break;
     }
 }
+        
+const removeNodeLeft = () => {$sliderContainer.removeChild($sliderContainer.children[0]);}
+const removeNodeRight = () => {$sliderContainer.removeChild($sliderContainer.children[2]);}
 
 //n aumenta de 1 en 1 cada vez que se presionan las fechas de derecha o izquierda, esta funcion agrega un nodo al inicio, que se va a mostrar al deslizar hacia la derecha
 function addNodeLeft(n, detectImg) {
-    switch (cantidad) {
+    switch (quantityImagesShow) {
         case 1:
             
             break;
 
         case 2:
-
-            if (n%2===0) {
-                let $nodo = document.createElement("img");
-        
-                $nodo.classList.add("imagenes");
-                $nodo.setAttribute("src","img/img1.png");
-                $sliderContainer.insertBefore($nodo, $sliderContainer.firstChild);
-                $sliderContainer.firstElementChild.style.left = "-500px";
-            } else {
-                let $nodo = document.createElement("img");
-        
-                $nodo.classList.add("imagenes");
-                $nodo.setAttribute("src","img/img2.png");
-                $sliderContainer.insertBefore($nodo, $sliderContainer.firstChild);
-                $sliderContainer.firstElementChild.style.left = "-500px";
-            }
+            let $nodeTwoImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertBeforeSliderImg1($nodeTwoImages)
+                : insertBeforeSliderImg2($nodeTwoImages)
             break;
 
         case 3:
-
-            if (detectImg === 'img/img1.png') {
-                let $nodo_3 = document.createElement("img");
-            
-                    $nodo_3.classList.add("imagenes");
-                    $nodo_3.setAttribute("src","img/img2.png");
-                    $sliderContainer.insertBefore($nodo_3, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else if (detectImg === 'img/img2.png') {
-                let $nodo_3 = document.createElement("img");
-            
-                    $nodo_3.classList.add("imagenes");
-                    $nodo_3.setAttribute("src","img/img3.png");
-                    $sliderContainer.insertBefore($nodo_3, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else {
-                let $nodo_3 = document.createElement("img");
-            
-                    $nodo_3.classList.add("imagenes");
-                    $nodo_3.setAttribute("src","img/img1.png");
-                    $sliderContainer.insertBefore($nodo_3, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            }
-
+            let $nodeThreeImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertBeforeSliderImg2($nodeThreeImages)
+                : (detectImg === 'img/img2.png')
+                    ? insertBeforeSliderImg3($nodeThreeImages)
+                    : insertBeforeSliderImg1($nodeThreeImages)
             break;
 
         case 4:
-
-            if (detectImg === 'img/img1.png') {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img3.png");
-                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else if (detectImg === 'img/img2.png') {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img4.png");
-                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else if (detectImg === 'img/img3.png') {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img1.png");
-                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img2.png");
-                    $sliderContainer.insertBefore($nodo_4, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            }
+            let $nodeFourImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertBeforeSliderImg3($nodeFourImages)
+                : (detectImg === 'img/img2.png')
+                    ? insertBeforeSliderImg4($nodeFourImages)
+                    : (detectImg === 'img/img3.png')
+                        ? insertBeforeSliderImg1($nodeFourImages)
+                        : insertBeforeSliderImg2($nodeFourImages)
             break;
 
         case 5:
-
-            if (detectImg === 'img/img1.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img4.png");
-                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else if (detectImg === 'img/img2.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img5.png");
-                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else if (detectImg === 'img/img3.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img1.png");
-                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else if (detectImg === 'img/img4.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img2.png");
-                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            } else {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img3.png");
-                    $sliderContainer.insertBefore($nodo_5, $sliderContainer.firstChild);
-                    $sliderContainer.firstElementChild.style.left = "-500px";
-            }
+            let $nodeFiveImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertBeforeSliderImg4($nodeFiveImages)
+                : (detectImg === 'img/img2.png')
+                    ? insertBeforeSliderImg5($nodeFiveImages)
+                    : (detectImg === 'img/img3.png')
+                        ? insertBeforeSliderImg1($nodeFiveImages)
+                        : (detectImg === 'img/img4.png')
+                            ? insertBeforeSliderImg2($nodeFiveImages)
+                            : insertBeforeSliderImg3($nodeFiveImages)
             break;
     
         default:
@@ -322,127 +266,49 @@ function addNodeLeft(n, detectImg) {
 
 //n aumenta de 1 en 1 cada vez que se presionan las fechas de derecha o izquierda, esta funcion agrega un nodo al final, que se va a mostrar al deslizar hacia la izquierda
 function addNodeRight(n, detectImg) {
-    switch (cantidad) {
+    switch (quantityImagesShow) {
         case 1:
             
             break;
 
         case 2:
-
-            if (n%2===0) {
-                let $nodo_2 = document.createElement("img");
-        
-                $nodo_2.classList.add("imagenes");
-                $nodo_2.setAttribute("src","img/img1.png");
-                $sliderContainer.appendChild($nodo_2);
-                $sliderContainer.lastElementChild.style.left = "500px";
-            } else {
-                let $nodo_2 = document.createElement("img");
-        
-                $nodo_2.classList.add("imagenes");
-                $nodo_2.setAttribute("src","img/img2.png");
-                $sliderContainer.appendChild($nodo_2);
-                $sliderContainer.lastElementChild.style.left = "500px";
-            }
+            let $nodeTwoImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertAfterSliderImg1($nodeTwoImages)
+                : insertAfterSliderImg2($nodeTwoImages)
             break;
 
         case 3:
-
-            if (detectImg === 'img/img1.png') {
-                let $nodo_3 = document.createElement("img");
-            
-                    $nodo_3.classList.add("imagenes");
-                    $nodo_3.setAttribute("src","img/img3.png");
-                    $sliderContainer.appendChild($nodo_3);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else if (detectImg === 'img/img2.png') {
-                let $nodo_3 = document.createElement("img");
-            
-                    $nodo_3.classList.add("imagenes");
-                    $nodo_3.setAttribute("src","img/img1.png");
-                    $sliderContainer.appendChild($nodo_3);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else {
-                let $nodo_3 = document.createElement("img");
-            
-                    $nodo_3.classList.add("imagenes");
-                    $nodo_3.setAttribute("src","img/img2.png");
-                    $sliderContainer.appendChild($nodo_3);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            }
+            let $nodeThreeImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertAfterSliderImg3($nodeThreeImages)
+                : (detectImg === 'img/img2.png')
+                    ? insertAfterSliderImg1($nodeThreeImages)
+                    : insertAfterSliderImg2($nodeThreeImages)
             break;
 
         case 4:
-
-            if (detectImg === 'img/img1.png') {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img3.png");
-                    $sliderContainer.appendChild($nodo_4);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else if (detectImg === 'img/img2.png') {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img4.png");
-                    $sliderContainer.appendChild($nodo_4);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else if (detectImg === 'img/img3.png') {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img1.png");
-                    $sliderContainer.appendChild($nodo_4);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else {
-                let $nodo_4 = document.createElement("img");
-            
-                    $nodo_4.classList.add("imagenes");
-                    $nodo_4.setAttribute("src","img/img2.png");
-                    $sliderContainer.appendChild($nodo_4);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            }
+            let $nodeFourImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertAfterSliderImg3($nodeFourImages)
+                : (detectImg === 'img/img2.png')
+                    ? insertAfterSliderImg4($nodeFourImages)
+                    : (detectImg === 'img/img3.png')
+                        ? insertAfterSliderImg1($nodeFourImages)
+                        : insertAfterSliderImg2($nodeFourImages)
             break;
 
         case 5:
-
-            if (detectImg === 'img/img1.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img3.png");
-                    $sliderContainer.appendChild($nodo_5);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else if (detectImg === 'img/img2.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img4.png");
-                    $sliderContainer.appendChild($nodo_5);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else if (detectImg === 'img/img3.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img5.png");
-                    $sliderContainer.appendChild($nodo_5);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else if (detectImg === 'img/img4.png') {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img1.png");
-                    $sliderContainer.appendChild($nodo_5);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            } else {
-                let $nodo_5 = document.createElement("img");
-            
-                    $nodo_5.classList.add("imagenes");
-                    $nodo_5.setAttribute("src","img/img2.png");
-                    $sliderContainer.appendChild($nodo_5);
-                    $sliderContainer.lastElementChild.style.left = "500px";
-            }
+            let $nodeFiveImages = document.createElement("img");
+            (detectImg === 'img/img1.png')
+                ? insertAfterSliderImg3($nodeFiveImages)
+                : (detectImg === 'img/img2.png')
+                    ? insertAfterSliderImg4($nodeFiveImages)
+                    : (detectImg === 'img/img3.png')
+                        ? insertAfterSliderImg5($nodeFiveImages)
+                        : (detectImg === 'img/img4.png')
+                            ? insertAfterSliderImg1($nodeFiveImages)
+                            : insertAfterSliderImg2($nodeFiveImages)
             break;
     
         default:
@@ -450,10 +316,43 @@ function addNodeRight(n, detectImg) {
     }
 }
 
+const initPosition = () => {
+    $sliderContainer.firstElementChild.style.left = "-500px";
+    $sliderContainer.lastElementChild.style.left = "500px";
+}
+const loadSliderContainer = ($node2,$node3) => {
+    $node2.classList.add("imagenes");
+    $node2.setAttribute("src","img/img1.png");
+    $sliderContainer.appendChild($node2)
+    $node3.classList.add("imagenes");
+    $node3.setAttribute("src","img/img2.png");
+    $sliderContainer.appendChild($node3);
+}
+const insertBeforeSliderImg1 = ($node) => {$node.setAttribute("src","img/img1.png");insertSliderLeft($node);}
+const insertBeforeSliderImg2 = ($node) => {$node.setAttribute("src","img/img2.png");insertSliderLeft($node);}
+const insertBeforeSliderImg3 = ($node) => {$node.setAttribute("src","img/img3.png");insertSliderLeft($node);}
+const insertBeforeSliderImg4 = ($node) => {$node.setAttribute("src","img/img4.png");insertSliderLeft($node);}
+const insertBeforeSliderImg5 = ($node) => {$node.setAttribute("src","img/img5.png");insertSliderLeft($node);}
+const insertAfterSliderImg1 = ($node) => {$node.setAttribute("src","img/img1.png");insertSliderRight($node);}
+const insertAfterSliderImg2 = ($node) => {$node.setAttribute("src","img/img2.png");insertSliderRight($node);}
+const insertAfterSliderImg3 = ($node) => {$node.setAttribute("src","img/img3.png");insertSliderRight($node);}
+const insertAfterSliderImg4 = ($node) => {$node.setAttribute("src","img/img4.png");insertSliderRight($node);}
+const insertAfterSliderImg5 = ($node) => {$node.setAttribute("src","img/img5.png");insertSliderRight($node);}
+
+const insertSliderLeft = ($node) => {
+    $node.classList.add("imagenes");
+    $sliderContainer.insertBefore($node, $sliderContainer.firstChild);
+    $sliderContainer.firstElementChild.style.left = "-500px";
+}
+const insertSliderRight = ($node) => {
+    $node.classList.add("imagenes");
+    $sliderContainer.appendChild($node);
+    $sliderContainer.lastElementChild.style.left = "500px";
+}
 //esta funcion elimina los elementos hijos del contenedor de imagenes dejandolo vacio
 function resetImages() {
     //cantidad es el valor que se obtiene al presionar alguna de las 5 cajas, si es 1, el $sliderContainer solo tiene un elemento
-    if (cantidad===1) {
+    if (quantityImagesShow===1) {
         $sliderContainer.removeChild($sliderContainer.children[0]);
     } else {
         $sliderContainer.removeChild($sliderContainer.children[2]);
@@ -461,203 +360,101 @@ function resetImages() {
         $sliderContainer.removeChild($sliderContainer.children[0]);
     }
 }
-
-//valorN sera '1'(presiona el boton derecha) o '-1'(presiona el boton izquierda)
-function restartImages(n, valorN, detectaImagen) {
-
-    switch (cantidad) {
-        case 1:
-            
-            break;
-    
-        case 2:
-            if (valorN > 0) {
-                $sliderContainer.removeChild($sliderContainer.children[0]);
-        
-                addNodeRight(n, detectaImagen);
-            } else {
-                $sliderContainer.removeChild($sliderContainer.children[2]);
-        
-                addNodeLeft(n, detectaImagen);
-            }
-            break;
-
-        case 3:
-            if (valorN > 0) {
-                $sliderContainer.removeChild($sliderContainer.children[0]);
-        
-                addNodeRight(n, detectaImagen);
-            } else {
-                $sliderContainer.removeChild($sliderContainer.children[2]);
-        
-                addNodeLeft(n, detectaImagen);
-            }
-            break;
-
-        case 4:
-            if (valorN > 0) {
-                $sliderContainer.removeChild($sliderContainer.children[0]);
-                
-                addNodeRight(n, detectaImagen);
-            } else {
-                $sliderContainer.removeChild($sliderContainer.children[2]);
-
-                addNodeLeft(n, detectaImagen);
-            }
-            break;
-
-        case 5:
-            if (valorN > 0) {
-                $sliderContainer.removeChild($sliderContainer.children[0]);
-
-                addNodeRight(n, detectaImagen);
-            } else {
-                $sliderContainer.removeChild($sliderContainer.children[2]);
-
-                addNodeLeft(n, detectaImagen);
-            }
-            break;
-    
-        default:
-            break;
-    }
-    
-    
-}
-
 //al momento de cerrar el slider, restaura el contenedor de imagenes, dejandolo sin ninguna imagen
-close.addEventListener('click' , () => {
-    modal.removeAttribute('open')
-    resetImages();
-})
+close.addEventListener('click' , () => {modal.removeAttribute('open');resetImages();})
+
+const openModal = () => {
+    modal.setAttribute('open','true');
+}
 
 c1.addEventListener('click' , function(){
-    izq.style.display="none";
-    der.style.display="none";
-    modal.setAttribute('open','true');
-
-    cantidad = parseInt(c1.innerHTML);//se obtiene el valor 1
-    initImages(cantidad);
+    arrowLeft.style.display="none";
+    arrowRight.style.display="none";
+    openModal();
+    quantityImagesShow = parseInt(c1.innerHTML);//se obtiene el valor 1
+    initImages(quantityImagesShow);
 });
-
 c2.addEventListener('click' , function(){
-    mostrarFlechas();
-    modal.setAttribute('open','true');
-
-    cantidad = parseInt(c2.innerHTML);//se obtiene el valor 2
-    initImages(cantidad);
+    showArrows();
+    openModal();
+    quantityImagesShow = parseInt(c2.innerHTML);//se obtiene el valor 2
+    initImages(quantityImagesShow);
 });
 c3.addEventListener('click' , function(){
-    mostrarFlechas();
-    modal.setAttribute('open','true');
-
-    cantidad = parseInt(c3.innerHTML);//se obtiene el valor 3
-    initImages(cantidad);
+    showArrows();
+    openModal();
+    quantityImagesShow = parseInt(c3.innerHTML);//se obtiene el valor 3
+    initImages(quantityImagesShow);
 });
 c4.addEventListener('click' , function(){
-    mostrarFlechas();
-    modal.setAttribute('open','true');
-
-    cantidad = parseInt(c4.innerHTML);//se obtiene el valor 4
-    initImages(cantidad);
+    showArrows();
+    openModal();
+    quantityImagesShow = parseInt(c4.innerHTML);//se obtiene el valor 4
+    initImages(quantityImagesShow);
 });
 c5.addEventListener('click' , function(){
-    mostrarFlechas();
-    modal.setAttribute('open','true');
-
-    cantidad = parseInt(c5.innerHTML);//se obtiene el valor 5
-    initImages(cantidad);
+    showArrows();
+    openModal();
+    quantityImagesShow = parseInt(c5.innerHTML);//se obtiene el valor 5
+    initImages(quantityImagesShow);
 });
 
-//slider
-var slideIndex = 1;
-
-showDivs(slideIndex,1);
-
+const plusDivs = (n) => showDivs(slideIndex += n, n);
 //se activa al pulsar una de las flechas y obtiene valor '1'(boton derecho) o '-1'(boton izquierdo)
-function plusDivs(n) {
-    showDivs(slideIndex += n, n);
-}
-
 function showDivs(n, valorN) {
-    //var i;
-    //obtiene los elementos de la clase imagenes
-    let x = document.getElementsByClassName("imagenes");
     //el numero de imagenes mostradas seran con respecto al valor de cantidad, obtenidos al dar click en cualquiera de los cuadrados
-    switch (cantidad) {
+    switch (quantityImagesShow) {
         case 1:
             
             break;
         case 2:
-        //valorN sera positivo si se presiona la flecha derecha
+            let detectaImagen_2 = "";
+            detectaImagen_2 = $childrenSliderContainer[1].getAttribute("src");
+            //valorN sera positivo si se presiona la flecha derecha
             if (valorN > 0) {
-                x[0].style.left = "-1000px";
-                x[1].style.left = "-500px";
-                x[2].style.left = "0";
-                
-                restartImages(n, valorN);
+                moveImagesLeft();                
+                restartImages(n, valorN, detectaImagen_2);
             } else {
-                x[0].style.left = "0";
-                x[1].style.left = "500px";
-                x[2].style.left = "1000px";
-
-                restartImages(n, valorN);
+                moveImagesRight();
+                restartImages(n, valorN, detectaImagen_2);
             }   
 
             break;
         case 3:
             let detectaImagen_3 = "";
-            detectaImagen_3 = x[1].getAttribute("src");
+            detectaImagen_3 = $childrenSliderContainer[1].getAttribute("src");
 
             if (valorN > 0) {
-                x[0].style.left = "-1000px";
-                x[1].style.left = "-500px";
-                x[2].style.left = "0";
-                    
+                moveImagesLeft();                    
                 restartImages(n, valorN, detectaImagen_3);
             } else {
-                x[0].style.left = "0";
-                x[1].style.left = "500px";
-                x[2].style.left = "1000px";
-        
+                moveImagesRight();        
                 restartImages(n, valorN, detectaImagen_3);
             } 
             
             break;
         case 4:
             let detectaImagen_4 = "";
-            detectaImagen_4 = x[1].getAttribute("src");
+            detectaImagen_4 = $childrenSliderContainer[1].getAttribute("src");
     
             if (valorN > 0) {
-                x[0].style.left = "-1000px";
-                x[1].style.left = "-500px";
-                x[2].style.left = "0";
-                    
+                moveImagesLeft();                    
                 restartImages(n, valorN, detectaImagen_4);
             } else {
-                x[0].style.left = "0";
-                x[1].style.left = "500px";
-                x[2].style.left = "1000px";
-        
+                moveImagesRight();        
                 restartImages(n, valorN, detectaImagen_4);
             }
             
             break;
         case 5:
             let detectaImagen_5 = "";
-            detectaImagen_5 = x[1].getAttribute("src");
+            detectaImagen_5 = $childrenSliderContainer[1].getAttribute("src");
     
             if (valorN > 0) {
-                x[0].style.left = "-1000px";
-                x[1].style.left = "-500px";
-                x[2].style.left = "0";
-                    
+                moveImagesLeft();                    
                 restartImages(n, valorN, detectaImagen_5);
             } else {
-                x[0].style.left = "0";
-                x[1].style.left = "500px";
-                x[2].style.left = "1000px";
-        
+                moveImagesRight();        
                 restartImages(n, valorN, detectaImagen_5);
             }
             
@@ -666,4 +463,14 @@ function showDivs(n, valorN) {
         default:alert("Error desconocido")
             break;
     }
+}
+const moveImagesLeft = () => {
+    $childrenSliderContainer[0].style.left = "-1000px";
+    $childrenSliderContainer[1].style.left = "-500px";
+    $childrenSliderContainer[2].style.left = "0";
+}
+const moveImagesRight = () => {
+    $childrenSliderContainer[0].style.left = "0";
+    $childrenSliderContainer[1].style.left = "500px";
+    $childrenSliderContainer[2].style.left = "1000px";
 }

@@ -1,0 +1,69 @@
+@media (max-width: 715px) {
+    /* icono de user no mostrado para movil */
+    .user {display: none;}
+    /* se muestra la palabra HOME */
+    .nav-container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        transition: all 0.5s;
+        &:nth-last-child() {
+            order: -10px;
+        }
+        /* Vista del hamburger */
+        .menu-movil {
+            display: flex;
+            width: calc(136px / 3);
+            height: calc(136px / 3);
+            font-size: 25px;
+            margin-left: 32px;
+            i {
+                margin: auto;
+            }
+        }
+        .menu {
+            display: table;
+            position: absolute;
+            top: 100px;
+            left: -240px;
+            transition: all 0.5s;
+            border-radius: 15px;
+            width: 20%;
+            background: #1F2B2D;
+            .items {
+                width: 106px;
+                line-height: 32px;
+                padding: 8px 32px;
+                padding-left: 16px;
+                display: flex;
+                justify-content: flex-start;
+                color: white;
+            }
+            /* icono hamburger se muestra */
+            .item1 {display: flex;}
+            /* tomara el lugar del hamburger cuando se oculte */
+            a {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                border-bottom: 1px solid #ffffff;
+            }
+        }
+    }
+    .menu-movil , .cross {
+        margin-top: 25px;
+    }
+    /* css para cajas */
+    .cajas {
+        width: 100%;
+        align-items: center;
+        .cuadrados {
+            display: flex;
+            flex-direction: column;        
+            .caja1 , .caja2 , .caja3 , .caja4 , .caja5 {
+                width: 200px;
+                height: 200px;
+                margin-bottom: 50px;
+            }
+        }
+    }
+}

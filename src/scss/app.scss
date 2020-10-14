@@ -1,4 +1,6 @@
-body {
-    background: green;
-    color: white;
-}
+@import "_menu.scss";
+@import "_cajas.scss";
+@import "_modal-slider.scss";
+@import "_img.scss";
+@import "_close.scss";
+@import "_media-query.scss";

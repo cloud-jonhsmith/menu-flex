@@ -328,7 +328,7 @@ const loadSliderContainer = ($node2,$node3) => {
     $node3.setAttribute("src","img/img2.png");
     $sliderContainer.appendChild($node3);
 }
-const insertBeforeSliderImg1 = ($node) => {$node.setAttribute("src","img/img1.png");insertSliderLeft($node);}
+/* const insertBeforeSliderImg1 = ($node) => {$node.setAttribute("src","img/img1.png");insertSliderLeft($node);}
 const insertBeforeSliderImg2 = ($node) => {$node.setAttribute("src","img/img2.png");insertSliderLeft($node);}
 const insertBeforeSliderImg3 = ($node) => {$node.setAttribute("src","img/img3.png");insertSliderLeft($node);}
 const insertBeforeSliderImg4 = ($node) => {$node.setAttribute("src","img/img4.png");insertSliderLeft($node);}
@@ -337,7 +337,16 @@ const insertAfterSliderImg1 = ($node) => {$node.setAttribute("src","img/img1.png
 const insertAfterSliderImg2 = ($node) => {$node.setAttribute("src","img/img2.png");insertSliderRight($node);}
 const insertAfterSliderImg3 = ($node) => {$node.setAttribute("src","img/img3.png");insertSliderRight($node);}
 const insertAfterSliderImg4 = ($node) => {$node.setAttribute("src","img/img4.png");insertSliderRight($node);}
-const insertAfterSliderImg5 = ($node) => {$node.setAttribute("src","img/img5.png");insertSliderRight($node);}
+const insertAfterSliderImg5 = ($node) => {$node.setAttribute("src","img/img5.png");insertSliderRight($node);} */
+
+const insertBeforeSliderImg = (node, imgNumber) => {
+    node.setAttribute("src", `img/img${imgNumber}.png`);
+    insertSliderLeft(node);
+}
+const insertAfterSliderImg = (node, imgNumber) => {
+    node.setAttribute("src", `img/img${imgNumber}.png`);
+    insertSliderRight(node);
+}
 
 const insertSliderLeft = ($node) => {
     $node.classList.add("imagenes");

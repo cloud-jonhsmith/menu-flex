@@ -1,4 +1,4 @@
-import { menu, icono, cross, cajas, alturaNav } from "../variables/variables.js";
+import { icono, cross, cajas, menu, alturaNav } from "../variables/variables.js";
 //funcion que controla el icono hamburger
 export const menuMovil:VoidFunction = () => {
     menu.style.left="0";

@@ -16,6 +16,19 @@ module.exports = {
                 test:/\.scss$/,
                 use: [MiniCssExtractPlugin.loader,'css-loader','sass-loader'],
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(jpg|png|jpeg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: 'static/',
+                            useRelativePath: true
+                        }
+                    }
+                ]
             }
         ]
     },

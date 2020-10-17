@@ -28,8 +28,6 @@ for (let i = 0; i < arrayBoxes.length; i++) {
     arrayBoxes[i].addEventListener('click', () => clickBox(arrayBoxes[i]));
 }
 
-
-
 window.addEventListener("resize", function(event) {
     var nuevoAncho = document.body.clientWidth;
     if (nuevoAncho>715) {

@@ -1,10 +1,15 @@
-import { insertSliderLeft, insertSliderRight} from "./insert-slider.js";
+import { insertSlider } from "./insert-slider.js";
+import { $sliderContainer } from "../variables/variables.js";
 
-export const insertBeforeSliderImg = (node:any, imgNumber:number) => {
-    node.setAttribute("src", `static/img${imgNumber}.png`);
-    insertSliderLeft(node);
+export const insertBeforeSliderImg = (imgNumber:number) => {
+    let node:any = insertSlider(imgNumber);
+
+    $sliderContainer.insertBefore(node, $sliderContainer.firstChild);
+    $sliderContainer.firstElementChild.style.left = "-500px";
 }
-export const insertAfterSliderImg = (node:any, imgNumber:number) => {
-    node.setAttribute("src", `static/img${imgNumber}.png`);
-    insertSliderRight(node);
+export const insertAfterSliderImg = (imgNumber:number) => {
+    let node:any = insertSlider(imgNumber);
+
+    $sliderContainer.appendChild(node);
+    $sliderContainer.lastElementChild.style.left = "500px";
 }

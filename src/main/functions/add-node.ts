@@ -1,51 +1,39 @@
 import { getQuantityImages } from "./quantity-images.js";
 import { insertBeforeSliderImg, insertAfterSliderImg } from "./insert-slider-img.js";
-//n aumenta de 1 en 1 cada vez que se presionan las fechas de derecha o izquierda, esta funcion agrega un nodo al inicio, que se va a mostrar al deslizar hacia la derecha
-export function addNodeLeft(n:number, detectImg:any) {
-    let quantityImagesShow = getQuantityImages();
+
+export function addNodeLeft(valorImg:number) {
+    let quantityImagesShow:number = getQuantityImages();
     switch (quantityImagesShow) {
         case 1:
             
             break;
 
         case 2:
-            let $nodeTwoImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertBeforeSliderImg($nodeTwoImages, quantityImagesShow)
-                : insertBeforeSliderImg($nodeTwoImages, quantityImagesShow)
+            insertBeforeSliderImg(valorImg);
             break;
 
         case 3:
-            let $nodeThreeImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertBeforeSliderImg($nodeThreeImages, quantityImagesShow)
-                : (detectImg === 'static/img2.png')
-                    ? insertBeforeSliderImg($nodeThreeImages, quantityImagesShow)
-                    : insertBeforeSliderImg($nodeThreeImages, quantityImagesShow)
+            (valorImg===3)
+                ? insertBeforeSliderImg(1)
+                : insertBeforeSliderImg(valorImg+1)
             break;
 
         case 4:
-            let $nodeFourImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertBeforeSliderImg($nodeFourImages, quantityImagesShow)
-                : (detectImg === 'static/img2.png')
-                    ? insertBeforeSliderImg($nodeFourImages, quantityImagesShow)
-                    : (detectImg === 'static/img3.png')
-                        ? insertBeforeSliderImg($nodeFourImages, quantityImagesShow)
-                        : insertBeforeSliderImg($nodeFourImages, quantityImagesShow)
+            (valorImg===4)
+                ? insertBeforeSliderImg(2)
+                : (valorImg===3)
+                    ? insertBeforeSliderImg(1)
+                    : insertBeforeSliderImg(valorImg+2)
             break;
 
         case 5:
-            let $nodeFiveImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertBeforeSliderImg($nodeFiveImages, quantityImagesShow)
-                : (detectImg === 'static/img2.png')
-                    ? insertBeforeSliderImg($nodeFiveImages, quantityImagesShow)
-                    : (detectImg === 'static/img3.png')
-                        ? insertBeforeSliderImg($nodeFiveImages, quantityImagesShow)
-                        : (detectImg === 'static/img4.png')
-                            ? insertBeforeSliderImg($nodeFiveImages, quantityImagesShow)
-                            : insertBeforeSliderImg($nodeFiveImages, quantityImagesShow)
+            (valorImg===5)
+                ? insertBeforeSliderImg(3)
+                : (valorImg===4)
+                    ? insertBeforeSliderImg(2)
+                    : (valorImg===3)
+                        ? insertBeforeSliderImg(1)
+                        : insertBeforeSliderImg(valorImg+3)
             break;
     
         default:
@@ -53,8 +41,7 @@ export function addNodeLeft(n:number, detectImg:any) {
     }
 }
 
-//n aumenta de 1 en 1 cada vez que se presionan las fechas de derecha o izquierda, esta funcion agrega un nodo al final, que se va a mostrar al deslizar hacia la izquierda
-export function addNodeRight(n:number, detectImg:any) {
+export function addNodeRight(valorImg:number) {
     let quantityImagesShow = getQuantityImages();
     switch (quantityImagesShow) {
         case 1:
@@ -62,43 +49,31 @@ export function addNodeRight(n:number, detectImg:any) {
             break;
 
         case 2:
-            let $nodeTwoImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertAfterSliderImg($nodeTwoImages, quantityImagesShow)
-                : insertAfterSliderImg($nodeTwoImages, quantityImagesShow)
+            insertAfterSliderImg(valorImg);
             break;
 
         case 3:
-            let $nodeThreeImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertAfterSliderImg($nodeThreeImages, quantityImagesShow)
-                : (detectImg === 'static/img2.png')
-                    ? insertAfterSliderImg($nodeThreeImages, quantityImagesShow)
-                    : insertAfterSliderImg($nodeThreeImages, quantityImagesShow)
+            (valorImg===1)
+                ? insertAfterSliderImg(3)
+                : insertAfterSliderImg(valorImg-1)
             break;
 
         case 4:
-            let $nodeFourImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertAfterSliderImg($nodeFourImages, quantityImagesShow)
-                : (detectImg === 'static/img2.png')
-                    ? insertAfterSliderImg($nodeFourImages, quantityImagesShow)
-                    : (detectImg === 'static/img3.png')
-                        ? insertAfterSliderImg($nodeFourImages, quantityImagesShow)
-                        : insertAfterSliderImg($nodeFourImages, quantityImagesShow)
+            (valorImg===1)
+                ? insertAfterSliderImg(3)
+                : (valorImg===2)
+                    ? insertAfterSliderImg(4)
+                    : insertAfterSliderImg(valorImg-2)
             break;
 
         case 5:
-            let $nodeFiveImages = document.createElement("img");
-            (detectImg === 'static/img1.png')
-                ? insertAfterSliderImg($nodeFiveImages, quantityImagesShow)
-                : (detectImg === 'static/img2.png')
-                    ? insertAfterSliderImg($nodeFiveImages, quantityImagesShow)
-                    : (detectImg === 'static/img3.png')
-                        ? insertAfterSliderImg($nodeFiveImages, quantityImagesShow)
-                        : (detectImg === 'static/img4.png')
-                            ? insertAfterSliderImg($nodeFiveImages, quantityImagesShow)
-                            : insertAfterSliderImg($nodeFiveImages, quantityImagesShow)
+            (valorImg===1)
+                ? insertAfterSliderImg(3)
+                : (valorImg===2)
+                    ? insertAfterSliderImg(4)
+                    : (valorImg===3)
+                        ? insertAfterSliderImg(5)
+                        : insertAfterSliderImg(valorImg-3)
             break;
     
         default:

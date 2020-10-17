@@ -1,17 +1,18 @@
 import { $childrenSliderContainer } from "../variables/variables.js";
-import { $sliderContainer } from "../variables/variables.js";
 
 export const moveImagesLeft = () => {
-    console.log($childrenSliderContainer);
-    console.log($sliderContainer);
-    $childrenSliderContainer[0].style.left = "-1000px";
-    $childrenSliderContainer[1].style.left = "-500px";
-    $childrenSliderContainer[2].style.left = "0";
+    let valorStyleLeft:number = -1000;
+
+    for (let i = 0; i <= 2; i++) {
+        $childrenSliderContainer[i].style.left = `${valorStyleLeft}px`;
+        valorStyleLeft += 500;
+    }
 }
 export const moveImagesRight = () => {
-    console.log($childrenSliderContainer);
-    console.log($sliderContainer);
-    $childrenSliderContainer[0].style.left = "0";
-    $childrenSliderContainer[1].style.left = "500px";
-    $childrenSliderContainer[2].style.left = "1000px";
+    let valorStyleLeft:number = 0;
+
+    for (let i = 0; i <= 2; i++) {
+        $childrenSliderContainer[i].style.left = `${valorStyleLeft}px`;
+        valorStyleLeft += 500;
+    }
 }

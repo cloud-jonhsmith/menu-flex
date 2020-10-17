@@ -1,12 +1,8 @@
-import { $sliderContainer } from "../variables/variables.js";
+export const insertSlider = (imgNumber:number) => {
+    let node:any = document.createElement("img");
 
-export const insertSliderLeft = ($node:any) => {
-    $node.classList.add("imagenes");
-    $sliderContainer.insertBefore($node, $sliderContainer.firstChild);
-    $sliderContainer.firstElementChild.style.left = "-500px";
-}
-export const insertSliderRight = ($node:any) => {
-    $node.classList.add("imagenes");
-    $sliderContainer.appendChild($node);
-    $sliderContainer.lastElementChild.style.left = "500px";
+    node.setAttribute("src", `static/img${imgNumber}.png`);
+    node.classList.add("imagenes");
+    
+    return node;
 }

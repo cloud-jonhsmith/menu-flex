@@ -7,8 +7,8 @@ exports.resetImages = function (quantityImagesShow) {
         variables_js_1.$sliderContainer.removeChild(variables_js_1.$sliderContainer.children[0]);
     }
     else {
-        variables_js_1.$sliderContainer.removeChild(variables_js_1.$sliderContainer.children[2]);
-        variables_js_1.$sliderContainer.removeChild(variables_js_1.$sliderContainer.children[1]);
-        variables_js_1.$sliderContainer.removeChild(variables_js_1.$sliderContainer.children[0]);
+        for (var i = 2; i >= 0; i--) {
+            variables_js_1.$sliderContainer.removeChild(variables_js_1.$sliderContainer.children[i]);
+        }
     }
 };

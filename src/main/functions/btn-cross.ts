@@ -1,4 +1,4 @@
-import { icono, cross, cajas, menu, alturaNav } from "../variables/variables.js";
+import { icono, cross, cajas, menu, alturaNav } from "../variables/variables";
 //funcion que controla el icono hamburger
 export const closeMenuMovil:VoidFunction = () => {
     cross.style.display="none";

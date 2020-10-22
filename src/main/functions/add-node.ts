@@ -1,5 +1,5 @@
-import { getQuantityImages } from "./quantity-images.js";
-import { insertBeforeSliderImg, insertAfterSliderImg } from "./insert-slider-img.js";
+import { getQuantityImages } from "./quantity-images";
+import { insertBeforeSliderImg, insertAfterSliderImg } from "./insert-slider-img";
 
 export function addNodeLeft(valorImg:number) {
     let quantityImagesShow:number = getQuantityImages();

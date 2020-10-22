@@ -1,6 +1,5 @@
-import { getQuantityImages } from "./quantity-images.js";
-import { removeNodeLeft, removeNodeRight } from "./remove-node.js";
-import { addNodeLeft, addNodeRight } from "./add-node.js";
+import { removeNodeLeft, removeNodeRight } from "./remove-node";
+import { addNodeLeft, addNodeRight } from "./add-node";
 
 export function restartImages(directionArrow:number, valorImg:number) {
 

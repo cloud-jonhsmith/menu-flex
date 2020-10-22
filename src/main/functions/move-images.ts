@@ -1,4 +1,4 @@
-import { $childrenSliderContainer } from "../variables/variables.js";
+import { $childrenSliderContainer } from "../variables/variables";
 
 export const moveImagesLeft = () => {
     let valorStyleLeft:number = -1000;

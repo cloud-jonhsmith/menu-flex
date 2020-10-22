@@ -1,4 +1,4 @@
-import { $sliderContainer } from "../variables/variables.js";
+import { $sliderContainer } from "../variables/variables";
 
 export const removeNodeLeft = () => {
     $sliderContainer.removeChild($sliderContainer.children[0]);

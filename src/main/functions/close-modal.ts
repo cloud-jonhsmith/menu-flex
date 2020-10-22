@@ -1,6 +1,6 @@
-import { modal } from "../variables/variables.js";
-import { getQuantityImages } from "./quantity-images.js";
-import { resetImages } from "./reset-images.js";
+import { modal } from "../variables/variables";
+import { getQuantityImages } from "./quantity-images";
+import { resetImages } from "./reset-images";
 
 export const closeModal = () => {
     let quantityImagesShow:number = getQuantityImages();

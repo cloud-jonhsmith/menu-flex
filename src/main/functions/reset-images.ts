@@ -1,4 +1,4 @@
-import { $sliderContainer } from "../variables/variables.js";
+import { $sliderContainer } from "../variables/variables";
 
 export const resetImages = (quantityImagesShow:number) => {
     if (quantityImagesShow===1) {

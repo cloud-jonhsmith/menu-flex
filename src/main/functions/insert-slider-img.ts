@@ -1,5 +1,5 @@
-import { insertSlider } from "./insert-slider.js";
-import { $sliderContainer } from "../variables/variables.js";
+import { insertSlider } from "./insert-slider";
+import { $sliderContainer } from "../variables/variables";
 
 export const insertBeforeSliderImg = (imgNumber:number) => {
     let node:any = insertSlider(imgNumber);

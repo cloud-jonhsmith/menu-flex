@@ -1,4 +1,4 @@
-import { arrowLeft, arrowRight } from "../variables/variables.js";
+import { arrowLeft, arrowRight } from "../variables/variables";
 
 export const showArrows = () => {
     arrowLeft.style.display="block";

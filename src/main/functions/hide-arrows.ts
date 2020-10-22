@@ -1,4 +1,4 @@
-import { arrowLeft, arrowRight } from "../variables/variables.js";
+import { arrowLeft, arrowRight } from "../variables/variables";
 
 export const hideArrows = () => {
     arrowLeft.style.display="none";

@@ -1,3 +1,3 @@
-import { showDivs } from "./show-divs.js"
+import { showDivs } from "./show-divs"
 
 export const plusDivs = (directionArrow:number) => showDivs(directionArrow);

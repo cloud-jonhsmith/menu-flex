@@ -1,7 +1,6 @@
-import { getQuantityImages } from "./quantity-images.js";
-import { moveImagesLeft, moveImagesRight } from "./move-images.js";
-import { restartImages } from "./restart-images.js";
-import { detectaImagen } from "./detecta-Imagen.js";
+import { moveImagesLeft, moveImagesRight } from "./move-images";
+import { restartImages } from "./restart-images";
+import { detectaImagen } from "./detecta-Imagen";
 
 export const showDivs:any = (directionArrow:number) => {
 

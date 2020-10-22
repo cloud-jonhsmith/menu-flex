@@ -1,6 +1,6 @@
-import { initPosition} from "./init-position.js";
-import { getQuantityImages } from "./quantity-images.js";
-import { createElementSliderContainer } from "./create-element-slider.js";
+import { initPosition} from "./init-position";
+import { getQuantityImages } from "./quantity-images";
+import { createElementSliderContainer } from "./create-element-slider";
 
 export function initImages() {
      //div slider-container, dentro estaran las imagenes

@@ -1,8 +1,8 @@
-import { setQuantityImages } from "./quantity-images.js";
-import { openModal } from "./open-modal.js";
-import { initImages } from "./init-images.js";
-import { showArrows } from "./show-arrows.js";
-import { hideArrows } from "./hide-arrows.js";
+import { setQuantityImages } from "./quantity-images";
+import { openModal } from "./open-modal";
+import { initImages } from "./init-images";
+import { showArrows } from "./show-arrows";
+import { hideArrows } from "./hide-arrows";
 
 export function clickBox(valorBox:any)  {
     let quantityImagesShow:number = parseInt(valorBox.innerHTML);

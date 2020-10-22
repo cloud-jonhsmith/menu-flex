@@ -1,3 +1,5 @@
+$colorCajas: #228be6;
+
 /* contenedor de las cajas */
 section {
     width: 700px;
@@ -22,19 +24,19 @@ section {
         .tam1 {
             width: 200px;
             height: 200px;
-            background: #228be6;
+            background: $colorCajas;
         }
         //tamaño de los artículos rectángulos
         .tam2 {
             width: 400px;
             height: 200px;
-            background: #228be6;
+            background: $colorCajas;
         }
         //tamaño de los artículos que ocupan todo el ancho
         .tam3 {
             width: 100%;
             height: 200px;
-            background: #228be6;
+            background: $colorCajas;
         }
     }
 }

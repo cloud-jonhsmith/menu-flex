@@ -1,4 +1,4 @@
-import { $childrenSliderContainer } from "../variables/variables.js";
+import { $childrenSliderContainer } from "../variables/variables";
 
 export const detectaImagen = () => {
     let detectaImagen:string = $childrenSliderContainer[1].getAttribute("src");

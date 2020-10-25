@@ -44,3 +44,7 @@ window.addEventListener("resize", function(event) {
         }
     }
 })
+
+if (module.hot) {
+    module.hot.accept();
+}

@@ -1,6 +1,10 @@
 # Proyect configuration
 
 ## 1. Proyect `Scripts`
+`Install your dependencies.`
+```
+>npm install
+```
 `Start Proyect at port 5000`
 ```
 >npm start
